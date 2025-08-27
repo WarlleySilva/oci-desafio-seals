@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: mysql-config
 data:
-  db_host: "10.0.2.100"  # Substitua depois pelo IP real
+  db_host: "10.0.2.173"  # Substitua depois pelo IP real
   db_port: "3306"
