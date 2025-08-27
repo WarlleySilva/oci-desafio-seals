@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        lifecycle:
+          postStart:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "<h1>App Rodando no Pod: $(POD_NAME)</h1>" > /usr/share/nginx/html/index.html
