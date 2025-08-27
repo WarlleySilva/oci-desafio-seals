@@ -43,7 +43,7 @@ spec:
           value: "webappdb"
         - name: DB_USER
           value: "admin"
-        lifecycle:
+		lifecycle:
           postStart:
             exec:
               command:
@@ -59,8 +59,8 @@ spec:
                     <style>
                       body {
                         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        background-color: #f4f6f9;
-                        color: #333;
+                        background: linear-gradient(to bottom, #0a1a2f, #000000);
+                        color: #ecf0f1;
                         margin: 0;
                         padding: 0;
                         text-align: center;
@@ -69,40 +69,41 @@ spec:
                         max-width: 800px;
                         margin: 50px auto;
                         padding: 20px;
-                        background: white;
+                        background: rgba(255,255,255,0.05);
                         border-radius: 12px;
-                        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
                       }
                       h1 {
-                        color: #2c3e50;
-                        margin-bottom: 10px;
+                        color: #ffffff;
+                        margin-bottom: 15px;
+                        font-size: 2em;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
                       }
                       .pod-name {
                         font-size: 1.5em;
-                        color: #e74c3c;
+                        color: #ff6600; /* cor laranja estilo foguete */
                         font-weight: bold;
                         margin: 10px 0;
                       }
-                      .info {
-                        margin: 5px 0;
+                      .info, .db {
+                        margin: 6px 0;
                         font-size: 1em;
-                        color: #34495e;
+                        color: #bdc3c7;
                       }
-                      .db {
-                        margin: 5px 0;
-                        font-size: 1em;
-                        color: #16a085;
+                      .db b {
+                        color: #ffcc66;
                       }
                       .timestamp {
                         font-size: 0.9em;
-                        color: #7f8c8d;
-                        margin-top: 20px;
+                        color: #95a5a6;
+                        margin-top: 25px;
                       }
                     </style>
                   </head>
                   <body>
                     <div class="container">
-                      <h1>App Rodando no Pod:</h1>
+                      <h1>🚀 App Rodando no Pod</h1>
                       <p class="pod-name">$POD_NAME</p>
                       <p class="info"><b>IP do Pod:</b> $POD_IP</p>
                       <p class="info"><b>Namespace:</b> $NAMESPACE</p>
