@@ -45,4 +45,18 @@ Implantar uma aplicação web no cluster OKE com alta disponibilidade e acesso e
 
 ---
 
+## 🐧 Etapa 2: MySQL em PaaS
+
+- Instância MySQL criada com sucesso
+- Private IP: `10.0.2.173`
+- Acesso via VCN (seguro)
+- Credenciais armazenadas em `Secret`
+- Host e porta em `ConfigMap`
+- Dump SQL gerado: `dump.sql`
+
+✅ Entregas:
+- `docs/configmap-mysql.yaml`
+- `dump.sql`
+- `kubectl get secret mysql-secret`
+
 ✅ **Desafio em andamento** | Por: Warlley Silva | Data: 27/08/2025
