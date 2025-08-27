@@ -29,4 +29,59 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  echo "<h1>App Rodando no Pod: $(POD_NAME)</h1>" > /usr/share/nginx/html/index.html
+                  cat > /usr/share/nginx/html/index.html << EOF
+                  <!DOCTYPE html>
+                  <html lang="pt-BR">
+                  <head>
+                    <meta charset="UTF-8">
+                    <title>App Rodando no Pod</title>
+                    <style>
+                      body {
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        background-color: #f4f6f9;
+                        color: #333;
+                        margin: 0;
+                        padding: 0;
+                        text-align: center;
+                      }
+                      .container {
+                        max-width: 800px;
+                        margin: 50px auto;
+                        padding: 20px;
+                        background: white;
+                        border-radius: 12px;
+                        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                      }
+                      h1 {
+                        color: #2c3e50;
+                        margin-bottom: 10px;
+                      }
+                      .pod-name {
+                        font-size: 1.5em;
+                        color: #e74c3c;
+                        font-weight: bold;
+                        margin: 10px 0;
+                      }
+                      .timestamp {
+                        font-size: 0.9em;
+                        color: #7f8c8d;
+                        margin-top: 20px;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div class="container">
+                      <h1>App Rodando no Pod:</h1>
+                      <p class="pod-name">$POD_NAME</p>
+                      <p class="timestamp">Página gerada em $(date)</p>
+                    </div>
+                  </body>
+                  </html>
+                  EOF
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
