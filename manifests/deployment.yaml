@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: web-app
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: web
@@ -22,6 +22,27 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        # variáveis de conexão DB (pode vir de Secret/ConfigMap depois)
+        - name: DB_HOST
+          value: "10.0.20.77"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_NAME
+          value: "webappdb"
+        - name: DB_USER
+          value: "admin"
         lifecycle:
           postStart:
             exec:
@@ -62,6 +83,16 @@ spec:
                         font-weight: bold;
                         margin: 10px 0;
                       }
+                      .info {
+                        margin: 5px 0;
+                        font-size: 1em;
+                        color: #34495e;
+                      }
+                      .db {
+                        margin: 5px 0;
+                        font-size: 1em;
+                        color: #16a085;
+                      }
                       .timestamp {
                         font-size: 0.9em;
                         color: #7f8c8d;
@@ -73,6 +104,14 @@ spec:
                     <div class="container">
                       <h1>App Rodando no Pod:</h1>
                       <p class="pod-name">$POD_NAME</p>
+                      <p class="info"><b>IP do Pod:</b> $POD_IP</p>
+                      <p class="info"><b>Namespace:</b> $NAMESPACE</p>
+                      <p class="info"><b>Worker Node:</b> $NODE_NAME</p>
+                      <hr/>
+                      <p class="db"><b>DB Host:</b> $DB_HOST</p>
+                      <p class="db"><b>DB Port:</b> $DB_PORT</p>
+                      <p class="db"><b>DB Name:</b> $DB_NAME</p>
+                      <p class="db"><b>DB User:</b> $DB_USER</p>
                       <p class="timestamp">Página gerada em $(date)</p>
                     </div>
                   </body>
@@ -85,3 +124,4 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+
