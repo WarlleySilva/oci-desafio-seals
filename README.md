@@ -58,5 +58,6 @@ Implantar uma aplicação web no cluster OKE com alta disponibilidade e acesso e
 - `docs/configmap-mysql.yaml`
 - `dump.sql`
 - `kubectl get secret mysql-secret`
+- `Conexao do Pod com Mysql`
 
 ✅ **Desafio em andamento** | Por: Warlley Silva | Data: 27/08/2025
