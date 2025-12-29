@@ -7,7 +7,6 @@ Repositório do desafio técnico OCI, cobrindo:
 - Load Balancer + WAF
 - Disaster Recovery com FSDR
 - Segurança, Monitoramento e IAM
-
 ---
 
 ## 📌 Etapa 1: Cluster OKE + Aplicação Web
