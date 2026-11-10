@@ -9,8 +9,6 @@ Repositório do desafio técnico OCI, cobrindo:
 - Segurança, Monitoramento e IAM
 ---
 
-# TESTE
-
 ## 📌 Etapa 1: Cluster OKE + Aplicação Web
 
 ### ✅ Objetivo
